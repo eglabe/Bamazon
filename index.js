@@ -43,14 +43,34 @@ var promptCustomer = function() {
 	}
 
 	]).then(function(userResponse) {
-		var item = userResponse.userItem;
-		var units = userResponse.userUnits;
-		var query = "SELECT stock_quantity FROM products WHERE ?";
+		var itemOrdered = userResponse.userItem;
+		var unitsOrdered = userResponse.userUnits;
+		var queryStock = "SELECT stock_quantity FROM products WHERE ?";
 
-		db.query(query, {item_id: item}, function(err, res) {
+		db.query(queryStock, {item_id: itemOrdered}, function(err, res) {
 			var quantity = res[0].stock_quantity;
 
-			
+
+			// IF STATEMENT
+			if (quantity < unitsOrdered) {
+				console.log("Order can not be completed. Only " +quantity+ " left in stock.")
+			} else {
+
+				var queryPrice = "SELECT price FROM products WHERE ?";
+				db.query(queryPrice, {item_id: itemOrdered}, function(err, res) {
+					var price = res[0].price;
+					var total = parseInt(price * unitsOrdered);
+					console.log("Thank you for your order! Total: $" + total);
+				});
+
+				var newQuantity = parseInt(quantity - unitsOrdered);
+				console.log("new quantity "+newQuantity);
+				var queryUpdate = "UPDATE products SET stock_quantity = " + newQuantity + " WHERE ?";
+				db.query(queryUpdate, {item_id: itemOrdered}, function(err, res) {});
+
+			}
+
+
 		});
 
 	});
