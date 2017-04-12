@@ -16,7 +16,7 @@ db.connect(function(err) {
 
 // DATABASE QUERY DISPLAY OF ALL PRODUCTS
 
-db.query("SELECT `item_id`,`product_name`,`price` FROM `products`", function(err, res) {
+db.query("SELECT item_id, product_name, price FROM products", function(err, res) {
 	if (err) throw err;
 
 	for (var i = 0; i < res.length; i++) {
@@ -45,8 +45,13 @@ var promptCustomer = function() {
 	]).then(function(userResponse) {
 		var item = userResponse.userItem;
 		var units = userResponse.userUnits;
+		var query = "SELECT stock_quantity FROM products WHERE ?";
 
-		
+		db.query(query, {item_id: item}, function(err, res) {
+			var quantity = res[0].stock_quantity;
+
+			
+		});
 
 	});
 };
