@@ -3,16 +3,15 @@ var inquirer = require("inquirer");
 
 var promptCustomer = function() {
 	inquirer.prompt([
-
 	{
-	type: "input",
-	name: "userItem",
-	message: "What would you like to buy? Enter the 'Item number':"
+		type: "input",
+		name: "userItem",
+		message: "What would you like to buy? Enter the 'Item number':"
 	},
 	{
-	type: "input",
-	name: "userUnits",
-	message: "How many would you like to buy?"
+		type: "input",
+		name: "userUnits",
+		message: "How many would you like to buy?"
 	}
 
 	]).then(function(userResponse) {
@@ -30,6 +29,7 @@ var promptCustomer = function() {
 			} else {
 
 				var queryPrice = "SELECT price FROM products WHERE ?";
+				
 				db.query(queryPrice, {item_id: itemOrdered}, function(err, res) {
 					var price = res[0].price;
 					var total = parseInt(price * unitsOrdered);
