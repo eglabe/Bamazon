@@ -13,4 +13,16 @@ var connection = mysql.createConnection({
   database: "Bamazon"
 });
 
+// **A**
 module.exports = connection;
+
+// // **B**
+// module.exports = {
+
+// 	connection: connection,
+
+// 	customer: require("./customer.js") (connection)
+
+// }
+
+
