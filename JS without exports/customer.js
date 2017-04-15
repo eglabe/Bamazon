@@ -50,4 +50,3 @@ var promptCustomer = function() {
 
 module.exports = promptCustomer;
 
-
