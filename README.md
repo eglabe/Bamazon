@@ -15,8 +15,8 @@ Running index.jx from "JS without exports" file.
 
 ![Alt Tag](/images/b.png)
 Items for sale are listed, and customer is prompted for what they would like to buy.
-*Note: Camp Chair was chosen and there are 30 in stock.
+*Note: First Aid Kit was chosen and there are 30 in stock.
 
 ![Alt Tag](/images/c.png)
 Customer is prompted for how many they would like to buy. Upon hitting enter, the total is shown and the database it updated.
-*Note: Next to Camp Chair the quantity has changed to 28.
+*Note: Next to First Aid Kit the quantity has changed to 28.
