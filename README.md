@@ -19,3 +19,6 @@ Format: (url)
 
 ![GitHub Logo](/images/a.png)
 Format: ![Alt Text](url)
+
+
+![Alt Tag](/images/a.png)
